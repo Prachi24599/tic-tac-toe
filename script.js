@@ -26,3 +26,23 @@ function initGame() {
 }
 
 initGame();
+
+function handleClick(index) {
+  if (gameGrid[index] === "") {
+    //update on UI
+    boxes[index].innerText = currentPlayer;
+    //update in logic
+    gameGrid[index] = currentPlayer;
+    //swap the turn
+    swapTurn();
+    //check if game is over
+    checkGameOver();
+  }
+}
+
+boxes.forEach((box, index) => {
+  box.addEventListener("click", () => {
+    //console.log(index);
+    handleClick(index);
+  });
+});
