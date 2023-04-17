@@ -10,8 +10,8 @@
   width: 100vw;
   height: 100vh;
   background-image: linear-gradient(
-    90deg,
-    rgba(128, 32, 0, 1) 0%,
+    60deg,
+    rgba(128, 32, 0, 1) 30%,
     rgba(238, 130, 238, 1) 100%
   );
   display: grid;
@@ -81,7 +81,7 @@
   border: 1px solid rgba(255, 255, 255, 0.25);
   padding: 0.5rem 2rem;
   cursor: pointer;
-  /* display: none; */
+  display: none;
 }
 .btn.active {
   display: flex;
