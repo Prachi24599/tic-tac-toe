@@ -79,6 +79,18 @@ function checkGameOver() {
     newGameBtn.classList.add("active");
     return;
   }
+
+  //check weather there is a tie
+  let fillCount = 0;
+  gameGrid.forEach((box) => {
+    if (box !== "") fillCount++;
+  });
+
+  //board is filled, game is tie
+  if (fillCount === 9) {
+    gameInfo.innerText = `Game Tied !`;
+    newGameBtn.classList.add("active");
+  }
 }
 
 function handleClick(index) {
