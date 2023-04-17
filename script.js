@@ -21,11 +21,25 @@ const winningPositions = [
 function initGame() {
   currentPlayer = "X";
   gameGrid = ["", "", "", "", "", "", "", "", ""];
+  //Need to update(make it empty) on UI also
+  boxes.forEach((box, index) => {
+    box.innerText = "";
+    boxes[index].style.pointerEvents = "all";
+  });
   newGameBtn.classList.remove("active");
   gameInfo.innerText = `Current Player - ${currentPlayer}`;
 }
-
 initGame();
+
+function swapTurn() {
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
+  //update the current player on UI too
+  gameInfo.innerText = `Current Player - ${currentPlayer}`;
+}
+
+function checkGameOver() {
+  newGameBtn.classList.add("active");
+}
 
 function handleClick(index) {
   if (gameGrid[index] === "") {
@@ -33,6 +47,7 @@ function handleClick(index) {
     boxes[index].innerText = currentPlayer;
     //update in logic
     gameGrid[index] = currentPlayer;
+    boxes[index].style.pointerEvents = "none";
     //swap the turn
     swapTurn();
     //check if game is over
@@ -46,3 +61,6 @@ boxes.forEach((box, index) => {
     handleClick(index);
   });
 });
+
+//reset game when clicked on newGameBtn
+newGameBtn.addEventListener("click", initGame);
